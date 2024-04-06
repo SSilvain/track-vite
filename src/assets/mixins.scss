@@ -1,0 +1,64 @@
+@function toRem($px, $current: 16) {
+	$result: math.div($px, $current) + rem;
+	@return $result;
+}
+
+@function em($px, $current: 16) {
+	$result: math.div($px, $current) + em;
+	@return $result;
+}
+
+@mixin av($property, $maxValueProperty, $minValueProperty, $holdValueMoreMaxWidth: "on", $holdValueLessMinWidth: "on", $widthMax: $containerWidth, $widthMin: $minWidth) {
+	@if ($maxValueProperty==0) {
+		$maxValueProperty: 0.000001;
+	}
+
+	@if ($minValueProperty==0) {
+		$minValueProperty: 0.000001;
+	}
+
+	$addSize: math.div($maxValueProperty - $minValueProperty, 16);
+
+	@if ($widthMax ==$containerWidth and $maxWidthContainer ==0) {
+		$widthMax: $maxWidth;
+	}
+
+	// https://css-tricks.com/linearly-scale-font-size-with-css-clamp-based-on-the-viewport/
+	$slope: math.div(($maxValueProperty - $minValueProperty), ($widthMax - $widthMin));
+	$yIntersection: -$widthMin * $slope + $minValueProperty;
+
+	@if ($yIntersection==0) {
+		$yIntersection: 0.000001;
+	}
+
+	$flyValue: #{toRem($yIntersection)}" + "#{$slope * 100}vw;
+
+	$propertyValue: #{"clamp(" toRem($minValueProperty) "," $flyValue "," toRem($maxValueProperty) ")"};
+
+	@if ($minValueProperty > $maxValueProperty) {
+		$propertyValue: #{"clamp(" toRem($maxValueProperty) "," $flyValue "," toRem($minValueProperty) ")"};
+	}
+
+	@if ($holdValueMoreMaxWidth =="on") {
+		@media (min-width: em($widthMax)) {
+			#{$property}: toRem($maxValueProperty);
+		}
+	}
+
+	@media (min-width: em($widthMin)) and (max-width: em($widthMax)) {
+
+		@supports (#{$property}: $propertyValue) {
+			#{$property}: $propertyValue;
+		}
+
+		@supports not (#{$property}: $propertyValue) {
+			#{$property}: calc(#{toRem($minValueProperty)} + #{$addSize} * (100vw - #{toRem($widthMin)}) / #{math.div($widthMax, 16) - math.div($widthMin, 16)});
+		}
+	}
+
+	@if ($holdValueLessMinWidth =="on") {
+		@media (max-width: em($widthMin)) {
+			#{$property}: toRem($minValueProperty);
+		}
+	}
+}
