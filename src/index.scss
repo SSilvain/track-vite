@@ -1,6 +1,4 @@
 @use 'sass:math';
-@import 'src/assets/mixins';
-@import 'src/assets/null';
 
 @import url("https://fonts.googleapis.com/css?family=Inter:regular,900&display=swap");
 // @import 'src/assets/icons';
@@ -22,6 +20,9 @@ $pc: $containerWidth + px;
 $tablet: 991.98px;
 $mobile: 767.98px;
 $mobileSmall: 479.98px;
+
+@import 'src/assets/mixins';
+@import 'src/assets/null';
 
 body {
 	.lock & {
@@ -61,3 +62,4 @@ body {
 
 @import 'src/assets/button';
 @import 'src/home/header';
+@import 'src/home/main';

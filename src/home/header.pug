@@ -1,16 +1,25 @@
-header.header
-	.header__container
-
-		.header__menu.menu
-			button.menu__icon.icon-menu(type="button")
-				span
-			nav.menu__body
-				ul.menu__list
-					li.menu__item
-						a.menu__link(href="#") Home
-					li.menu__item
-						a.menu__link(href="#") About
-					li.menu__item
-						a.menu__link(href="#") Products
-					li.menu__item
-						a.menu__link(href="#") Services
+.wrapper-header-hero
+	header.header
+		.header__container
+			.header__logo
+			.header__menu.menu
+				button.menu__icon.icon-menu(type="button")
+					span
+				nav.menu__body
+					ul.menu__list
+						li.menu__item
+							a.menu__link(href="#") Features
+						li.menu__item
+							a.menu__link(href="#") Our Team
+						li.menu__item
+							a.menu__link(href="#") Pricing
+			.header__auth
+				a.header__auth-link(href="#signin", title="Sign in") Sign In
+				a.header__auth-link.header__auth-link--button(href="#getstarted", title="Get Started") Get Started
+	section.hero
+		.hero__container
+			h1.hero__title Manage your projects and collaborate with teams
+			h3.subtitle.hero__subtitle A tool for visualising , organising and tracking all the work you do
+			.hero__block-buttons
+				a.hero__link.hero__link--main GetStarted
+				a.hero__link Book Demo

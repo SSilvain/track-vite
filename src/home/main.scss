@@ -1,0 +1,9 @@
+.adventages__block {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	grid-gap: 1px;
+	background: #baf;
+}
+.adventages__item{
+	background: #fff;
+}
