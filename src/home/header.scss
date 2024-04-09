@@ -1,3 +1,121 @@
+.wrapper-header-hero {}
+
+.header {
+
+	// .header__container
+
+	&__container {
+		display: grid;
+		grid-template-columns: 1fr auto 1fr;
+		// padding: 18px 0;
+		padding-top: 21px;
+		padding-bottom: 18px;
+		column-gap: 24px;
+	}
+
+	// .header__logo
+
+	&__logo {
+		padding-top: 18px;
+	}
+
+	// .header__menu
+
+	&__menu {}
+
+	// .header__auth
+
+	&__auth {
+		display: flex;
+		justify-content: end;
+		// align-items: baseline;
+		align-items: center;
+		column-gap: 24px;
+	}
+
+	// .header__auth-link
+
+	&__auth-link {}
+
+	// .header__auth-link--button
+
+	&__auth-link--button {
+		border-radius: 10px;
+		padding: 14px 16px;
+		width: 123px;
+		height: 52px;
+		background: #dbf301;
+		font-weight: 500;
+		line-height: 150%;
+		color: #000;
+	}
+}
+
+.menu {
+
+	// .menu__icon
+
+	&__icon {}
+
+	// .menu__body
+
+	&__body {}
+
+	// .menu__list
+
+	&__list {
+		padding-top: 18px;
+		display: flex;
+		flex-wrap: wrap;
+		column-gap: 105px;
+		@include av($property: 'column-gap',
+			$startValueProperty: 20,
+			$endValueProperty: 105,
+			$holdValueBeforeStart: 'on',
+			$holdValueAfterEnd: 'on',
+			$startPointAdaptive: 800,
+			$endPointAdaptive: 1140);
+	}
+
+	// .menu__item
+
+	&__item {}
+
+	// .menu__link
+
+	&__link {}
+}
+
+.icon-menu {}
+
+.hero {
+
+	// .hero__container
+
+	&__container {}
+
+	// .hero__title
+
+	&__title {}
+
+	// .hero__subtitle
+
+	&__subtitle {}
+
+	// .hero__block-buttons
+
+	&__block-buttons {}
+
+	// .hero__link
+
+	&__link {}
+
+	// .hero__link--main
+
+	&__link--main {}
+}
+
+.subtitle {}
 
 //Burger
 .icon-menu {

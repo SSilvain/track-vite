@@ -8,24 +8,31 @@
 	@return $result;
 }
 
-@mixin av($property, $maxValueProperty, $minValueProperty, $holdValueMoreMaxWidth: "on", $holdValueLessMinWidth: "on", $widthMax: $containerWidth, $widthMin: $minWidth) {
-	@if ($maxValueProperty==0) {
-		$maxValueProperty: 0.000001;
+@mixin av($property,
+	$startValueProperty,
+	$endValueProperty,
+	$holdValueBeforeStart: "on",
+	$holdValueAfterEnd: "on",
+	$startPointAdaptive: $minWidth,
+	$endPointAdaptive: $containerWidth) {
+
+	@if ($endValueProperty==0) {
+		$endValueProperty: 0.000001;
 	}
 
-	@if ($minValueProperty==0) {
-		$minValueProperty: 0.000001;
+	@if ($startValueProperty==0) {
+		$startValueProperty: 0.000001;
 	}
 
-	$addSize: math.div($maxValueProperty - $minValueProperty, 16);
+	$addSize: math.div($endValueProperty - $startValueProperty, 16);
 
-	@if ($widthMax ==$containerWidth and $maxWidthContainer ==0) {
-		$widthMax: $maxWidth;
+	@if ($endPointAdaptive ==$containerWidth and $maxWidthContainer ==0) {
+		$endPointAdaptive: $maxWidth;
 	}
 
 	// https://css-tricks.com/linearly-scale-font-size-with-css-clamp-based-on-the-viewport/
-	$slope: math.div(($maxValueProperty - $minValueProperty), ($widthMax - $widthMin));
-	$yIntersection: -$widthMin * $slope + $minValueProperty;
+	$slope: math.div(($endValueProperty - $startValueProperty), ($endPointAdaptive - $startPointAdaptive));
+	$yIntersection: -$startPointAdaptive * $slope + $startValueProperty;
 
 	@if ($yIntersection==0) {
 		$yIntersection: 0.000001;
@@ -33,32 +40,32 @@
 
 	$flyValue: #{toRem($yIntersection)}" + "#{$slope * 100}vw;
 
-	$propertyValue: #{"clamp(" toRem($minValueProperty) "," $flyValue "," toRem($maxValueProperty) ")"};
+	$propertyValue: #{"clamp(" toRem($startValueProperty) "," $flyValue "," toRem($endValueProperty) ")"};
 
-	@if ($minValueProperty > $maxValueProperty) {
-		$propertyValue: #{"clamp(" toRem($maxValueProperty) "," $flyValue "," toRem($minValueProperty) ")"};
+	@if ($startValueProperty > $endValueProperty) {
+		$propertyValue: #{"clamp(" toRem($endValueProperty) "," $flyValue "," toRem($startValueProperty) ")"};
 	}
 
-	@if ($holdValueMoreMaxWidth =="on") {
-		@media (min-width: em($widthMax)) {
-			#{$property}: toRem($maxValueProperty);
+	@if ($holdValueAfterEnd =="on") {
+		@media (min-width: em($endPointAdaptive)) {
+			#{$property}: toRem($endValueProperty);
 		}
 	}
 
-	@media (min-width: em($widthMin)) and (max-width: em($widthMax)) {
+	@media (min-width: em($startPointAdaptive)) and (max-width: em($endPointAdaptive)) {
 
 		@supports (#{$property}: $propertyValue) {
 			#{$property}: $propertyValue;
 		}
 
 		@supports not (#{$property}: $propertyValue) {
-			#{$property}: calc(#{toRem($minValueProperty)} + #{$addSize} * (100vw - #{toRem($widthMin)}) / #{math.div($widthMax, 16) - math.div($widthMin, 16)});
+			#{$property}: calc(#{toRem($startValueProperty)} + #{$addSize} * (100vw - #{toRem($startPointAdaptive)}) / #{math.div($endPointAdaptive, 16) - math.div($startPointAdaptive, 16)});
 		}
 	}
 
-	@if ($holdValueLessMinWidth =="on") {
-		@media (max-width: em($widthMin)) {
-			#{$property}: toRem($minValueProperty);
+	@if ($holdValueBeforeStart =="on") {
+		@media (max-width: em($startPointAdaptive)) {
+			#{$property}: toRem($startValueProperty);
 		}
 	}
 }
