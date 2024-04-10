@@ -50,7 +50,7 @@
 		color: #000;
 	}
 }
-
+//MARK: menu
 .menu {
 
 	// .menu__icon
@@ -75,6 +75,16 @@
 			$holdValueAfterEnd: 'on',
 			$startPointAdaptive: 800,
 			$endPointAdaptive: 1140);
+		// @include av($property: 'font-size',
+		// 	$startValueProperty: 14,
+		// 	$endValueProperty: 16,
+		// 	$holdValueBeforeStart: 'on',
+		// 	$holdValueAfterEnd: 'on',
+		// 	$startPointAdaptive: 800,
+		// 	$endPointAdaptive: 1140);
+	@media (max-width:$mobile){
+		 display: none; 
+	}
 	}
 
 	// .menu__item
@@ -116,7 +126,6 @@
 }
 
 .subtitle {}
-
 //Burger
 .icon-menu {
 	display: none;
