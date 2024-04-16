@@ -2,13 +2,17 @@
 	position: relative;
 	overflow: hidden;
 	display: inline-flex;
+	justify-content: center;
+	min-width: 123px;
+	padding: 14px 16px;
+	min-height: 52px;
+
 	&--fw {
 		width: 100%;
 	}
 
 
 	@media (any-hover: hover) {
-		&:hover {
-		}
+		&:hover {}
 	}
 }
