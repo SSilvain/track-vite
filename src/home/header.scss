@@ -56,7 +56,21 @@
 
 	//MARK: .menu__body
 
-	&__body {}
+	&__body {
+		@media (max-width:$mobile){
+			//  display: block; 
+			background: #75f;
+			position: absolute;
+			top: 0;
+			left: 0;
+			transform: translate(-100%);
+			transition: all .3s;
+			
+		}
+		.menu-open & {
+			transform: translate(0);
+		}
+	}
 
 	// .menu__list
 
@@ -79,9 +93,13 @@
 		// 	$holdValueAfterEnd: 'on',
 		// 	$startPointAdaptive: 800,
 		// 	$endPointAdaptive: 1140);
-	@media (max-width:$mobile){
-		 display: none; 
-	}
+		@media (max-width:$mobile){
+			 flex-direction: column; 
+			 gap: 40px;
+			 font-size: 40px;
+			 min-width: 100svw;
+			 min-height: 100svh;
+		}
 	}
 
 	// .menu__item
