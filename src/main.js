@@ -1,8 +1,8 @@
 import './index.scss'
 
 //MARK: bodyLock
-export let bodyLockStatus = true
-export let bodyLockToggle = (delay = 500) => {
+export let bodyLockHold = false
+export const bodyLockToggle = (delay = 5) => {0
 	if (document.documentElement.classList.contains('lock')) {
 		bodyUnlock(delay)
 	} else {
@@ -10,9 +10,9 @@ export let bodyLockToggle = (delay = 500) => {
 	}
 }
 
-export let bodyLock = (delay = 500) => {
+export const bodyLock = (delay) => {
 	let body = document.querySelector("body")
-	if (bodyLockStatus) {
+	if (!bodyLockHold) {
 		//For lp
 		// let lock_padding = document.querySelectorAll("[data-lp]")
 		// for (let index = 0; index < lock_padding.length; index++) {
@@ -22,16 +22,16 @@ export let bodyLock = (delay = 500) => {
 		body.style.paddingRight = window.innerWidth - document.querySelector('.wrapper').offsetWidth + 'px'
 		document.documentElement.classList.add("lock")
 
-		bodyLockStatus = false
+		bodyLockHold = true
 		setTimeout(function () {
-			bodyLockStatus = true
+			bodyLockHold = false
 		}, delay);
 	}
 }
 
-export let bodyUnlock = (delay = 500) => {
+export const bodyUnlock = (delay) => {
 	let body = document.querySelector("body")
-	if (bodyLockStatus) {
+	if (!bodyLockHold) {
 		// let lock_padding = document.querySelectorAll("[data-lp]")
 		setTimeout(() => {
 			//For lp
@@ -42,21 +42,32 @@ export let bodyUnlock = (delay = 500) => {
 			body.style.paddingRight = '0px'
 			document.documentElement.classList.remove("lock")
 		}, delay)
-		bodyLockStatus = false
+		bodyLockHold = true
 		setTimeout(function () {
-			bodyLockStatus = true
+			bodyLockHold = false
 		}, delay)
 	}
 }
 
 //MARK: menu
 const menu = (params = { buttonClass: '.icon-menu', menuOpenClass: 'menu-open' }) => {
-	if (document.querySelector(params.buttonClass)) {
+
+	const isButtonClass = document.querySelector(params.buttonClass)
+
+	if (isButtonClass) {
+
 		document.addEventListener('click', function (e) {
-			console.log(e.target)
-			if (bodyLockStatus && e.target.closest(params.buttonClass)) {
-				bodyLockToggle()
-				document.documentElement.classList.toggle('menu-open')
+
+			if (!bodyLockHold) {
+
+				const isClickOnButton = e.target.closest(params.buttonClass)
+
+				if (isClickOnButton) {
+
+					bodyLockToggle()
+					document.documentElement.classList.toggle('menu-open')
+
+				}
 			}
 		})
 	}
