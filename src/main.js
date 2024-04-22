@@ -2,7 +2,8 @@ import './index.scss'
 
 //MARK: bodyLock
 export let bodyLockHold = false
-export const bodyLockToggle = (delay = 5) => {0
+export const bodyLockToggle = (delay = 5) => {
+	0
 	if (document.documentElement.classList.contains('lock')) {
 		bodyUnlock(delay)
 	} else {
@@ -50,37 +51,35 @@ export const bodyUnlock = (delay) => {
 }
 
 //MARK: menu
-const menu = (params = { buttonClass: '.icon-menu', menuOpenClass: 'menu-open' }) => {
+const menu =
+	({ buttonClass, triggerOpenEnable }) => {
 
-	const isButtonClass = document.querySelector(params.buttonClass)
+		const isButtonClass = document.querySelector(buttonClass)
+		if (isButtonClass) {
 
-	if (isButtonClass) {
+			document.addEventListener('click', function (e) {
+				if (!bodyLockHold) {
 
-		document.addEventListener('click', function (e) {
+					const isClickOnButton = e.target.closest(buttonClass)
+					if (isClickOnButton) {
 
-			if (!bodyLockHold) {
+						bodyLockToggle()
+						document.documentElement.classList.toggle(triggerOpenEnable)
 
-				const isClickOnButton = e.target.closest(params.buttonClass)
-
-				if (isClickOnButton) {
-
-					bodyLockToggle()
-					document.documentElement.classList.toggle('menu-open')
-
+					}
 				}
+			})
+		}
+		return {
+			openMenu() {
+				bodyLock()
+				document.documentElement.classList.add(triggerOpenEnable)
+			},
+			closeMenu() {
+				bodyUnlock()
+				document.documentElement.classList.remove(triggerOpenEnable)
 			}
-		})
-	}
-	return {
-		openMenu() {
-			bodyLock()
-			document.documentElement.classList.add(params.menuOpenClass)
-		},
-		closeMenu() {
-			bodyUnlock()
-			document.documentElement.classList.remove(params.menuOpenClass)
 		}
 	}
-}
 
-const menuInit = menu({ buttonClass: '.icon-menu', menuOpenClass: 'menu-open' })
+const menuInit = menu({ buttonClass: '.icon-menu', triggerOpenEnable: 'menu-open' })
