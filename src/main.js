@@ -52,34 +52,35 @@ export const bodyUnlock = (delay) => {
 
 //MARK: menu
 const menu =
-	({ buttonClass, triggerOpenEnable }) => {
+	({ buttonClass, openClassForToggle }) => {
 
 		const isButtonClass = document.querySelector(buttonClass)
-		if (isButtonClass) {
+		if (!isButtonClass) throw 'the buttonClass is missing'
 
-			document.addEventListener('click', function (e) {
-				if (!bodyLockHold) {
+		document.addEventListener('click', function (e) {
+			if (!bodyLockHold) {
 
-					const isClickOnButton = e.target.closest(buttonClass)
-					if (isClickOnButton) {
+				const isClickOnButton = e.target.closest(buttonClass)
+				if (isClickOnButton) {
 
-						bodyLockToggle()
-						document.documentElement.classList.toggle(triggerOpenEnable)
+					bodyLockToggle()
+					document.documentElement.classList.toggle(openClassForToggle)
 
-					}
 				}
-			})
-		}
+			}
+		})
+
 		return {
 			openMenu() {
 				bodyLock()
-				document.documentElement.classList.add(triggerOpenEnable)
+				document.documentElement.classList.add(openClassForToggle)
 			},
 			closeMenu() {
 				bodyUnlock()
-				document.documentElement.classList.remove(triggerOpenEnable)
+				document.documentElement.classList.remove(openClassForToggle)
 			}
 		}
 	}
 
-const menuInit = menu({ buttonClass: '.icon-menu', triggerOpenEnable: 'menu-open' })
+const menuInit = menu({ buttonClass: '.icon-menu', openClassForToggle: 'menu-open' })
+
