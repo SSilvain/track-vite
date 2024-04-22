@@ -1,9 +1,26 @@
+.brands {}
+
+.brands__container {
+	display: flex;
+	justify-content: space-between;
+	filter: grayscale(1);
+	padding: 40px 0;
+}
+
+.brands__img {}
+
+
+
+
+
+
 .adventages__block {
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr;
 	grid-gap: 1px;
 	background: #baf;
 }
-.adventages__item{
+
+.adventages__item {
 	background: #fff;
 }

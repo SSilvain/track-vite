@@ -7,7 +7,6 @@
 	&__container {
 		display: grid;
 		grid-template-columns: 1fr auto 1fr;
-		// padding: 18px 0;
 		padding-top: 21px;
 		padding-bottom: 18px;
 		column-gap: 24px;
@@ -28,7 +27,6 @@
 	&__auth {
 		display: flex;
 		justify-content: end;
-		// align-items: baseline;
 		align-items: center;
 		column-gap: 24px;
 	}
@@ -47,6 +45,7 @@
 		color: #000;
 	}
 }
+
 //MARK: menu
 .menu {
 
@@ -57,7 +56,7 @@
 	//MARK: .menu__body
 
 	&__body {
-		@media (max-width:$mobile){
+		@media (max-width:$mobile) {
 			//  display: block; 
 			background: #75f;
 			position: absolute;
@@ -65,8 +64,9 @@
 			left: 0;
 			transform: translate(-100%);
 			transition: all .3s;
-			
+
 		}
+
 		.menu-open & {
 			transform: translate(0);
 		}
@@ -86,19 +86,12 @@
 			$holdValueAfterEnd: 'on',
 			$startPointAdaptive: 800,
 			$endPointAdaptive: 1140);
-		// @include av($property: 'font-size',
-		// 	$startValueProperty: 14,
-		// 	$endValueProperty: 16,
-		// 	$holdValueBeforeStart: 'on',
-		// 	$holdValueAfterEnd: 'on',
-		// 	$startPointAdaptive: 800,
-		// 	$endPointAdaptive: 1140);
-		@media (max-width:$mobile){
-			 flex-direction: column; 
-			 gap: 40px;
-			 font-size: 40px;
-			 min-width: 100svw;
-			 min-height: 100svh;
+		@media (max-width:$mobile) {
+			flex-direction: column;
+			gap: 40px;
+			font-size: 40px;
+			min-width: 100svw;
+			min-height: 100svh;
 		}
 	}
 
@@ -127,28 +120,53 @@
 		text-align: center;
 		padding: 0 30px;
 		max-width: 900px;
-		margin: 0 auto;
 		line-height: 1.2;
+		margin: 0 auto 5px;
 	}
-
+	
 	// .hero__subtitle
-
-	&__subtitle {}
+	
+	&__subtitle {
+		text-align: center;
+		font-weight: 400;
+		font-size: 24px;
+		line-height: 150%;
+		color: #000;
+		margin: 0 auto 35px;
+	}
 
 	// .hero__block-buttons
 
-	&__block-buttons {}
+	&__block-buttons {
+		display: flex;
+		justify-content: center;
+	}
 
 	// .hero__link
 
-	&__link {}
+	&__link {
+		border: 1px solid $accentColor;
+		border-radius: 10px;
+		font-weight: 500;
+		line-height: 150%;
+		color: #000;
+		margin: 0 5px;
+	}
 
 	// .hero__link--main
 
-	&__link--main {}
+	&__link--main {
+		border-radius: 10px;
+		background: #dbf301;
+		font-weight: 500;
+		line-height: 150%;
+		color: #000;
+		border-color: transparent;
+	}
 }
 
 .subtitle {}
+
 //Burger
 .icon-menu {
 	display: none;
