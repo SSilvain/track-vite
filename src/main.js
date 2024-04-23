@@ -1,4 +1,5 @@
 import './index.scss'
+import './js/dynamic_adapt'
 
 //MARK: bodyLock
 export let bodyLockHold = false
@@ -14,12 +15,6 @@ export const bodyLock = (delay) => {
 	if (bodyLockHold) return
 
 	let body = document.querySelector("body")
-	//For lp
-	// let lock_padding = document.querySelectorAll("[data-lp]")
-	// for (let index = 0; index < lock_padding.length; index++) {
-	// 	const el = lock_padding[index]
-	// 	el.style.paddingRight = window.innerWidth - document.querySelector('.wrapper').offsetWidth + 'px'
-	// }
 	body.style.paddingRight = window.innerWidth - document.querySelector('.wrapper').offsetWidth + 'px'
 	document.documentElement.classList.add("lock")
 
@@ -33,13 +28,7 @@ export const bodyUnlock = (delay) => {
 	if (bodyLockHold) return
 
 	let body = document.querySelector("body")
-	// let lock_padding = document.querySelectorAll("[data-lp]")
 	setTimeout(() => {
-		//For lp
-		// for (let index = 0; index < lock_padding.length; index++) {
-		// 	const el = lock_padding[index]
-		// 	el.style.paddingRight = '0px'
-		// }
 		body.style.paddingRight = '0px'
 		document.documentElement.classList.remove("lock")
 	}, delay)
@@ -50,36 +39,33 @@ export const bodyUnlock = (delay) => {
 }
 
 //MARK: menu
-const menu =
-	({ buttonClass, openClassForToggle }) => {
+const menu = ({ buttonClass, openClassForToggle }) => {
 
-		const isButtonClass = document.querySelector(buttonClass)
-		if (!isButtonClass) throw 'the buttonClass is missing'
+	const buttonIsMissing = document.querySelector(buttonClass) ? false : true
+	if (buttonIsMissing) throw 'the buttonClass is missing'
 
-		document.addEventListener('click', function (e) {
-			if (bodyLockHold) return
+	document.addEventListener('click', function (e) {
+		if (bodyLockHold) return
 
-			const isClickOnButton = e.target.closest(buttonClass)
-			if (isClickOnButton) {
+		const isClickOnButton = e.target.closest(buttonClass)
+		if (isClickOnButton) {
 
-				bodyLockToggle()
-				document.documentElement.classList.toggle(openClassForToggle)
+			bodyLockToggle()
+			document.documentElement.classList.toggle(openClassForToggle)
 
-			}
-		})
+		}
+	})
 
-		return {
-			openMenu() {
-				bodyLock()
-				document.documentElement.classList.add(openClassForToggle)
-			},
-			closeMenu() {
-				bodyUnlock()
-				document.documentElement.classList.remove(openClassForToggle)
-			}
+	return {
+		openMenu() {
+			bodyLock()
+			document.documentElement.classList.add(openClassForToggle)
+		},
+		closeMenu() {
+			bodyUnlock()
+			document.documentElement.classList.remove(openClassForToggle)
 		}
 	}
+}
 
-const menuInit = menu({ buttonClass: '.icon-menu', openClassForToggle: 'menu-open' })
-
-alert('location')
+const menuInit = menu({ buttonClass: ".icon-menu", openClassForToggle: 'menu-open' })

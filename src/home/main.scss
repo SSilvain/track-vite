@@ -1,4 +1,6 @@
-.brands {}
+.brands {
+	margin-bottom: 100px;
+}
 
 .brands__container {
 	display: flex;
@@ -9,18 +11,52 @@
 
 .brands__img {}
 
+.adventages{
 
+}
+.adventages__container{
 
-
-
-
-.adventages__block {
+}
+.subtitle.adventages__title{
+	font-family: var(--font-family);
+	font-weight: 400;
+	font-size: 24px;
+	line-height: 150%;
+	text-align: center;
+	color: #000;
+	margin-bottom: 40px;
+}
+.adventages__block{
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr;
 	grid-gap: 1px;
-	background: #baf;
+	background: rgba(167, 161, 161, 0.48);
 }
-
 .adventages__item {
 	background: #fff;
+	padding: 70px 10px;
 }
+.adventages__item-img{
+display: block;
+margin: 0 auto;
+min-width: 46px;
+min-height: 46px;
+}
+.adventages__item-title{
+	font-family: var(--font-family);
+	font-weight: 500;
+	font-size: 21px;
+	line-height: 133%;
+	text-align: center;
+	color: #000;
+}
+.adventages__item-subtitle{
+	font-family: var(--font-family);
+	font-weight: 400;
+	font-size: 16px;
+	line-height: 162%;
+	text-align: center;
+	color: #52525b;
+}
+
+
