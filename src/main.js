@@ -44,7 +44,7 @@ const menu = ({ buttonClass, openClassForToggle }) => {
 	const buttonIsMissing = document.querySelector(buttonClass) ? false : true
 	if (buttonIsMissing) throw 'the buttonClass is missing'
 
-	document.addEventListener('click', function (e) {
+	document.addEventListener('click', (e) => {
 		if (bodyLockHold) return
 
 		const isClickOnButton = e.target.closest(buttonClass)
@@ -69,3 +69,9 @@ const menu = ({ buttonClass, openClassForToggle }) => {
 }
 
 const menuInit = menu({ buttonClass: ".icon-menu", openClassForToggle: 'menu-open' })
+
+const bodyChildren = document.body.childNodes
+for (let i = 0; i < bodyChildren.length; i++) {
+	console.log(bodyChildren[i]);
+}
+console.log(bodyChildren);
