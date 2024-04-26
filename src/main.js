@@ -1,71 +1,71 @@
 import './index.scss'
 import './js/dynamic_adapt'
 
-//MARK: bodylock
+//MARK: bodyLock
 export let bodyLockHold = false
-export const bodylocktoggle = (delay = 5) => {
-	if (document.documentelement.classlist.contains('lock')) {
-		bodyunlock(delay)
+export const bodyLockToggle = (delay = 5) => {
+	if (document.documentElement.classList.contains('lock')) {
+		bodyUnlock(delay)
 	} else {
-		bodylock(delay)
+		bodyLock(delay)
 	}
 }
 
-export const bodylock = (delay) => {
+export const bodyLock = (delay) => {
 	if (bodyLockHold) return
 
-	let body = document.queryselector("body")
-	body.style.paddingright = window.innerwidth - document.queryselector('.wrapper').offsetwidth + 'px'
-	document.documentelement.classlist.add("lock")
+	let body = document.querySelector("body")
+	body.style.paddingRight = window.innerWidth - document.querySelector('.wrapper').offsetWidth + 'px'
+	document.documentElement.classList.add("lock")
 
 	bodyLockHold = true
-	settimeout(function () {
+	setTimeout(function () {
 		bodyLockHold = false
 	}, delay);
 }
 
-export const bodyunlock = (delay) => {
+export const bodyUnlock = (delay) => {
 	if (bodyLockHold) return
 
-	let body = document.queryselector("body")
-	settimeout(() => {
-		body.style.paddingright = '0px'
-		document.documentelement.classlist.remove("lock")
+	let body = document.querySelector("body")
+	setTimeout(() => {
+		body.style.paddingRight = '0px'
+		document.documentElement.classList.remove("lock")
 	}, delay)
 	bodyLockHold = true
-	settimeout(function () {
+	setTimeout(function () {
 		bodyLockHold = false
 	}, delay)
 }
 
-//MARK: menu
-const menu = ({ buttonclass, openclassfortoggle }) => {
+//mark: menu
+const menu = ({ buttonClass, openClassForToggle }) => {
 
-	const buttonismissing = document.queryselector(buttonclass) ? false : true
-	if (buttonismissing) throw 'the buttonclass is missing'
+	const buttonIsMissing = document.querySelector(buttonClass) ? false : true
+	if (buttonIsMissing) throw 'the buttonClass is missing'
 
-	document.addeventlistener('click', (e) => {
+	document.addEventListener('click', (e) => {
 		if (bodyLockHold) return
 
-		const isclickonbutton = e.target.closest(buttonclass)
-		if (isclickonbutton) {
+		const isClickOnButton = e.target.closest(buttonClass)
+		if (isClickOnButton) {
 
-			bodylocktoggle()
-			document.documentelement.classlist.toggle(openclassfortoggle)
+			bodyLockToggle()
+			document.documentElement.classList.toggle(openClassForToggle)
 
 		}
 	})
 
 	return {
-		openmenu() {
-			bodylock()
-			document.documentelement.classlist.add(openclassfortoggle)
+		openMenu() {
+			bodyLock()
+			document.documentElement.classList.add(openClassForToggle)
 		},
-		closemenu() {
-			bodyunlock()
-			document.documentelement.classlist.remove(openclassfortoggle)
+		closeMenu() {
+			bodyUnlock()
+			document.documentElement.classList.remove(openClassForToggle)
 		}
 	}
 }
 
-const menuinit = menu({ buttonclass: ".icon-menu", openclassfortoggle: 'menu-open' })
+const menuInit = menu({ buttonClass: ".icon-menu", openClassForToggle: 'menu-open' })
