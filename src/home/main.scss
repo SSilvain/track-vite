@@ -12,16 +12,6 @@
 }
 
 
-// .subtitle.advantages__title {
-// 	font-family: var(--font-family);
-// 	font-weight: 400;
-// 	font-size: 24px;
-// 	line-height: 150%;
-// 	text-align: center;
-// 	color: #000;
-// 	margin-bottom: 40px;
-// }
-
 .advantages {
 
 	// .advantages__container
@@ -30,7 +20,14 @@
 
 	// .advantages__title
 
-	&__title {}
+	&__title {
+		font-weight: 400;
+		font-size: 24px;
+		line-height: 150%;
+		text-align: center;
+		color: #000;
+		margin-bottom: 40px;
+	}
 
 	// .advantages__block
 
@@ -60,7 +57,6 @@
 	// .advantages__item-title
 
 	&__item-title {
-		font-family: var(--font-family);
 		font-weight: 500;
 		font-size: 21px;
 		line-height: 133%;
@@ -71,7 +67,6 @@
 	// .advantages__item-subtitle
 
 	&__item-subtitle {
-		font-family: var(--font-family);
 		font-weight: 400;
 		font-size: 16px;
 		line-height: 162%;
@@ -87,29 +82,97 @@
 
 	&__container {}
 
+	// .team__subtitle
+
+	&__subtitle {
+		font-weight: 400;
+		font-size: 24px;
+		line-height: 150%;
+		text-align: center;
+		color: #000;
+	}
+
 	// .team__block
 
-	&__block {}
+	&__block {
+		// width: 1296px;
+		position: relative;
+		width: 1200px;
+		height: 40%;
+		
+	}
 
 	// .team__item
 
-	&__item {}
+	&__item {
+		background: #E2E8F0;
+		position: absolute;
+		border: 10px solid #fff;
+		aspect-ratio: 1/1;
+		border-radius: 50%;
+		overflow: hidden;
+
+		&--first {
+			width: calc(251/1296*100%);
+			left: 0%;
+			z-index: 2;
+		}
+
+		&--second {
+			width: calc(295.61/1296*100%);
+			left: 17%;
+			z-index: 1;
+		}
+
+		&--third {
+			background: #FDBA74;
+			width: calc(331/1296*100%);
+			left: 50%;
+			transform: translateX(-50%);
+			z-index: 3;
+		}
+
+		&--fourth {
+			width: calc(300/1296*100%);
+			left: 60%;
+			z-index: 1;
+		}
+
+		&--fifth {
+			width: calc(278/1296*100%);
+			left: 80%;
+			z-index: 2;
+		}
+	}
 
 	// .team__item-tooltip
 
-	&__item-tooltip {}
+	&__item-tooltip {
+		position: absolute;
+		top: 0;
+		left: 0;
+	}
 
 	// .team__item-name
 
-	&__item-name {}
+	&__item-name {
+		font-weight: 600;
+		font-size: 16px;
+		line-height: 200%;
+		text-align: center;
+		color: #090914;
+	}
 
 	// .team__item-position
 
-	&__item-position {}
+	&__item-position {
+		font-weight: 400;
+		font-size: 14px;
+		line-height: 186%;
+		text-align: center;
+		color: #71717a;
+	}
 
-	// .team__item-photo
-
-	&__item-photo {}
 }
 
 .reviews {

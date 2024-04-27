@@ -63,7 +63,22 @@ body {
 	padding: 0 15px;
 }
 
-
+[class*='-fit'] {
+	position: relative;
+	img {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: 0;
+		object-fit: cover;
+	}
+}
+[class*='-fit--contain'] {
+	img {
+		object-fit: contain;
+	}
+}
 @import 'src/assets/button';
 @import 'src/home/header';
 @import 'src/home/main';
