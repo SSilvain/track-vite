@@ -95,11 +95,8 @@
 	// .team__block
 
 	&__block {
-		// width: 1296px;
 		position: relative;
-		width: 1200px;
-		height: 40%;
-		
+		padding-bottom: 26%;
 	}
 
 	// .team__item
@@ -183,7 +180,13 @@
 
 	// .reviews__subtitle
 
-	&__subtitle {}
+	&__subtitle {
+		font-weight: 500;
+		font-size: 20px;
+		line-height: 140%;
+		text-align: center;
+		color: #000;
+	}
 
 	// .reviews__box
 
@@ -203,11 +206,35 @@
 
 	// .reviews__stars
 
-	&__stars {}
+	&__stars {
+		svg{
+			fill: #dbf301;
+		}
+	}
 
 	// .reviews__text
 
-	&__text {}
+	&__text {
+		font-weight: 500;
+		font-size: 18px;
+		line-height: 156%;
+		color: #090914;
+	}
+
+	&__position {
+		font-weight: 600;
+		font-size: 16px;
+		line-height: 175%;
+		letter-spacing: -0.01em;
+		color: #090914;
+
+		span {
+			font-weight: 400;
+			font-size: 16px;
+			line-height: 150%;
+			color: #64748b;
+		}
+	}
 }
 
 .offer {
