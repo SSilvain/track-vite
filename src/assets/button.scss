@@ -13,6 +13,8 @@
 
 
 	@media (any-hover: hover) {
-		&:hover {}
+		&:hover {
+			cursor: pointer;
+		}
 	}
 }

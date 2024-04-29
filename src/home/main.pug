@@ -83,27 +83,29 @@ section.advantages
 					img(src="img/reviews/review-2.png", alt="photo review")
 				.reviews__body
 					.reviews__stars
+						include elements/star.pug
+						include elements/star.pug
+						include elements/star.pug
+						include elements/star.pug
 					p.reviews__text No more switching between tasks .Time management has become efficient for my team
 					p.reviews__position Devon Lane <span>DLDesign.co</span>
 .offer
 	.offer__container
-		h2.offer__header It's free, it's easy and it's fun to use for your first project.
+		h2.offer__title It's free, it's easy and it's fun to use for your first project.
 		.offer__body
-			.offer__item
-				h3.offer__text Premium Pack
-				p.offer__subtitle Small teams
-				p.offer__cost $ 20
-				p.offer__text /Month
+			.offer__item.offer__item--active
+				h3.offer__subtitle.offer__subtitle--active Premium Pack
+				p.offer__text.offer__text--active Small teams
+				p.offer__cost.offer__cost--active $ 20 <span>/Month</span>
 				ul.offer__list
-					li.offer__list-item 5 team members
-					li.offer__list-item file sharing
-					li.offer__list-item Financial Service Features
-				button.offer__button $ 20/ Month
+					li.offer__list-item.offer__list-item--active 5 team members
+					li.offer__list-item.offer__list-item--active file sharing
+					li.offer__list-item.offer__list-item--active Financial Service Features
+				button.offer__button.offer__button--active $ 20/ Month
 			.offer__item
-				h3.offer__text Free pack
-				p.offer__subtitle Customer Reach & Budget
-				p.offer__cost $0
-				p.offer__text  /Month
+				h3.offer__subtitle Free pack
+				p.offer__text Customer Reach & Budget
+				p.offer__cost $0 <span>/Month</span>
 				ul.offer__list
 					li.offer__list-item 1 Team member
 					li.offer__list-item No file sharing
