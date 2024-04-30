@@ -64,7 +64,7 @@ body {
 	padding: 0 15px;
 }
 
-[class*='-fit'] {
+[class*='-ibg'] {
 	position: relative;
 	img {
 		position: absolute;
@@ -75,7 +75,7 @@ body {
 		object-fit: cover;
 	}
 }
-[class*='-fit--contain'] {
+[class*='-ibg--contain'] {
 	img {
 		object-fit: contain;
 	}

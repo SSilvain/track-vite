@@ -105,18 +105,28 @@
 		background: #E2E8F0;
 		position: absolute;
 		border: 10px solid #fff;
-		aspect-ratio: 1/1;
 		border-radius: 50%;
-		overflow: hidden;
+
+		img {
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			top: 0;
+			left: 0;
+			object-fit: cover;
+			border-radius: 50%;
+		}
 
 		&--first {
 			width: calc(251/1296*100%);
+			padding-bottom: calc(251/1296*100%);
 			left: 0%;
 			z-index: 2;
 		}
 
 		&--second {
 			width: calc(295.61/1296*100%);
+			padding-bottom: calc(295.61/1296*100%);
 			left: 17%;
 			z-index: 1;
 		}
@@ -124,6 +134,7 @@
 		&--third {
 			background: #FDBA74;
 			width: calc(331/1296*100%);
+			padding-bottom: calc(331/1296*100%);
 			left: 50%;
 			transform: translateX(-50%);
 			z-index: 3;
@@ -131,12 +142,17 @@
 
 		&--fourth {
 			width: calc(300/1296*100%);
+			padding-bottom: calc(300/1296*100%);
 			left: 60%;
 			z-index: 1;
+			img{
+				object-fit: contain;
+			}
 		}
 
 		&--fifth {
 			width: calc(278/1296*100%);
+			padding-bottom: calc(278/1296*100%);
 			left: 80%;
 			z-index: 2;
 		}
@@ -270,6 +286,7 @@
 		font-size: 42px;
 		line-height: 133%;
 		color: #000;
+		padding-right: 60px;
 	}
 
 	// .offer__body
@@ -281,14 +298,13 @@
 	// .offer__item
 
 	&__item {
-		display: grid;
-		align-content: start;
-		align-items: center;
+		display: flex;
+		flex-direction: column;
 		border-radius: 6px;
 		border: 1px solid #E5EAF1;
 		width: 318px;
 		min-height: 478px;
-		// padding: 40px;
+		padding: 40px;
 
 		&--active {
 			background: #485AFF;
@@ -306,6 +322,7 @@
 		letter-spacing: -0.01em;
 		text-align: center;
 		color: #0f172a;
+		margin-bottom: 20px;
 
 		&--active {
 			color: #fff;
@@ -320,6 +337,7 @@
 		line-height: 162%;
 		text-align: center;
 		color: #4b5262;
+		margin-bottom: 20px;
 
 		&--active {
 			color: #fff;
@@ -335,6 +353,7 @@
 		letter-spacing: -0.04em;
 		text-align: center;
 		color: #0f172a;
+		margin-bottom: 20px;
 
 		span {
 			font-weight: 400;
@@ -356,13 +375,16 @@
 	// .offer__list
 
 	&__list {
-		margin-bottom: auto;
+		flex-grow: 1;
 		text-align: center;
+		margin-bottom: 20px;
 	}
 
 	// .offer__list-item
 
 	&__list-item {
+		margin-bottom: 20px;
+
 		&--active {
 			color: #fff;
 		}
