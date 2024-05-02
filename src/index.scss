@@ -66,6 +66,7 @@ body {
 
 [class*='-ibg'] {
 	position: relative;
+
 	img {
 		position: absolute;
 		width: 100%;
@@ -75,11 +76,13 @@ body {
 		object-fit: cover;
 	}
 }
+
 [class*='-ibg--contain'] {
 	img {
 		object-fit: contain;
 	}
 }
+
 @import 'src/assets/button';
 @import 'src/home/header';
 @import 'src/home/main';
